@@ -30,7 +30,8 @@ public class PacienteController {
 	@GetMapping(value = "/{id}") 
 	public Paciente leerPorId(@PathVariable("id") Integer id) {
 		System.out.println("Controller El id del paciente a borrar es:"+id);
-		return service.leerPorId(id);
+		Paciente obj= service.leerPorId(id);
+		return obj;
 	}
 	
 	@PostMapping
