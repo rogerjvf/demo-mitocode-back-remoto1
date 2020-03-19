@@ -9,7 +9,7 @@ import com.consis.model.Paciente;
 
 public interface IPacienteService {
 	
-	void registrar(Paciente paciente);
+	Paciente registrar(Paciente paciente);
 	
 	void modificar(Paciente paciente);
 	

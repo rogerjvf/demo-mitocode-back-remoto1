@@ -11,7 +11,12 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPaciente;
-	private String paciente, apellidos, direccion, telefono,email;
+	private String nombres; 
+	private String apellidos;
+	private String dni;
+	private String direccion;
+	private String telefono; 
+	private String email;
 	
 	public Integer getIdPaciente() {
 		return idPaciente;
@@ -19,17 +24,25 @@ public class Paciente {
 	public void setIdPaciente(Integer idPaciente) {
 		this.idPaciente = idPaciente;
 	}
-	public String getPaciente() {
-		return paciente;
+	public String getNombres() {
+		return nombres;
 	}
-	public void setPaciente(String paciente) {
-		this.paciente = paciente;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 	public String getApellidos() {
 		return apellidos;
 	}
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+	
+	
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	public String getDireccion() {
 		return direccion;
