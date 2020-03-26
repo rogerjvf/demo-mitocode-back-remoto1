@@ -48,13 +48,13 @@ public class PacienteController {
 	
 	@PostMapping
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Paciente paci) {
-		System.out.println(paci.getNombres()+" "+paci.getApellidos());
+		System.out.println("Registrar a: "+paci.getNombres()+" "+paci.getApellidos());
 		Paciente obj = service.registrar(paci);
 		if (obj.getIdPaciente()>0) {
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdPaciente()).toUri();
 			return ResponseEntity.created(location).build();
 		}else		
-		return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@PutMapping
@@ -64,8 +64,15 @@ public class PacienteController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer id) {
-		service.eliminar(id);
+	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
+		Paciente obj = service.leerPorId(id); 
+		if (obj.getIdPaciente()==null) {
+			System.out.println("no existe  es:"+id);
+			throw new ModelNotFoundException("Id no encontrado "+id);
+		}else {
+			service.eliminar(id);
+			return new ResponseEntity<Object>(HttpStatus.OK); 
+		}		
 	}
 	
 
