@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.consis.model.Paciente;
 
-//@Repository //pasa a ser opcional ya que jpa contiene el manejo de las instacias con spring
+//@Repository //pasa a ser opcional ya que JpaRepository contiene el manejo de las instacias(inyeccion de dependencias) con spring
 public interface IPacienteRepo extends JpaRepository<Paciente,Integer>{  
 
 }

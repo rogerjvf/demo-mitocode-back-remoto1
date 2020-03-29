@@ -32,6 +32,10 @@ public class PacienteController {
 	@GetMapping
 	public ResponseEntity<List<Paciente>> listar(){
 		List <Paciente> lista= service.listar();
+		if(lista.size()==0) {
+			System.out.println("No existen registros en Paciente");
+			throw new ModelNotFoundException("No existen registros en Paciente");
+		}
 		return new ResponseEntity<List <Paciente>>(lista, HttpStatus.OK);
 	}
 	
