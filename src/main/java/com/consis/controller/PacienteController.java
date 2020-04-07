@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.hateoas.r;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+//import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+//import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import com.consis.exception.ModelNotFoundException;
 import com.consis.model.Paciente;
@@ -49,6 +53,18 @@ public class PacienteController {
 		}else		
 			return new ResponseEntity<Paciente>(obj,HttpStatus.OK); 
 	}
+	
+	/*@GetMapping(value = "/hateoas/{id}") 
+	public Resource<Paciente> leerPorIdHateoas(@PathVariable("id") Integer id) {
+		System.out.println("Controller El id del paciente a consultar  es:"+id);
+		Paciente obj = service.leerPorId(id); 
+		if (obj.getIdPaciente()==null) {
+			System.out.println("no existe  es:"+id);
+			throw new ModelNotFoundException("Id no encontrado "+id);
+		}else		
+			return new ResponseEntity<Paciente>(obj,HttpStatus.OK); 
+			ControllerLinkBuilder linkto = linkto(methodOn(this.getClass()));
+	}*/
 	
 	@PostMapping
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Paciente paci) {
