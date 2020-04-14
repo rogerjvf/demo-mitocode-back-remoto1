@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "Informacion de Medico")
 @Entity
 @Table(name="medico")
 public class Medico {
