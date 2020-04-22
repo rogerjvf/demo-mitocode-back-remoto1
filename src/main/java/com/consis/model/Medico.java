@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "Informacion de Medico")
 @Entity
@@ -17,11 +19,20 @@ public class Medico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Integer idMedico;
+	
 	@Column(name="nombres", nullable=false, length=70)
+	@ApiModelProperty(notes = "Nombre debe contener mas de 3 caracteres")
+	@Size(min = 3, message = "Nombre debe contener mas de 3 caracteres")
 	private String nombres;
+	
 	@Column(name="apellidos", nullable=false, length=70)
+	@ApiModelProperty(notes = "apellidos debe contener mas de 3 caracteres")
+	@Size(min = 3, message = "Apellidos debe contener mas de 3 caracteres")
 	private String apellidos;
+	
 	@Column(name="CMP", nullable=false, length=12)
+	@ApiModelProperty(notes = "CPM debe contener 12 caracteres")
+	@Size(min = 12, message = "CPM debe contener 12 caracteres")
 	private String CMP;
 	
 	public Integer getIdMedico() {
